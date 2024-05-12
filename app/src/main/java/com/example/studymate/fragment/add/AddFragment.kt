@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -24,7 +26,11 @@ class addFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_add, container, false)
 
+
         taskViewModel = ViewModelProvider(this).get(TaskViewModel::class.java)
+        view.findViewById<ImageView>(R.id.imageView6).setOnClickListener {
+            findNavController().navigate(R.id.action_addFragment_to_listFragment)
+        }
 
         view.findViewById<Button>(R.id.button).setOnClickListener {
             insertDataToDatabase()
