@@ -11,13 +11,12 @@ import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.example.studymate.R
-import com.example.studymate.database.TaskViewModel
-import com.example.studymate.database.Todo
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.studymate.viewmodel.TaskViewModel
+import com.example.studymate.model.Todo
 
 
 class addFragment : Fragment() {
-    private lateinit var taskViewModel:TaskViewModel
+    private lateinit var taskViewModel: TaskViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

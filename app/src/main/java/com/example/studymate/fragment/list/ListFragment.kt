@@ -11,7 +11,7 @@ import com.example.studymate.R
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.studymate.database.TaskViewModel
+import com.example.studymate.viewmodel.TaskViewModel
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class ListFragment : Fragment() {
