@@ -14,17 +14,12 @@ class MainActivity2 : AppCompatActivity() {
 
         // Find the ImageView with id imageView6 and set an OnClickListener to start MainActivity5
         val button = findViewById<ImageButton>(R.id.imageButton2)
-        val intent = Intent(this, ToDoHomeActivity::class.java)
+        val intent = Intent(this, TodayActivity::class.java)
         button.setOnClickListener {
             startActivity(intent)
         }
 
-        // Find the ImageView with id imageView10 and set an OnClickListener to start MainActivity4
-        val button2 = findViewById<ImageButton>(R.id.imageButton3)
-        val intent2 = Intent(this, ChallengeActivity::class.java)
-        button2.setOnClickListener {
-            startActivity(intent2)
-        }
+
 
     }
 }

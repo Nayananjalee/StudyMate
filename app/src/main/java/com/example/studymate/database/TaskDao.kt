@@ -2,6 +2,7 @@ package com.example.studymate.database
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -17,6 +18,9 @@ interface TodoDao {
 
     @Update
     suspend fun updateTodo(todo: Todo)
+
+    @Delete
+    suspend fun deleteTodo(todo: Todo)
 
 
     @Query("SELECT * FROM todo_table ORDER BY createDate ")

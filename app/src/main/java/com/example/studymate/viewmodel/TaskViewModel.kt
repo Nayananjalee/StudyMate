@@ -33,4 +33,11 @@ class TaskViewModel(application: Application): AndroidViewModel(application) {
 
         }
     }
+        fun deleteTodo(todo: Todo) {
+            viewModelScope.launch(Dispatchers.IO) {
+                repository.deleteTodo(todo)
+
+            }
+        }
+
 }

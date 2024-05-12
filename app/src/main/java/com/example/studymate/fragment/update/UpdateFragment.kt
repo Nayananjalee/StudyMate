@@ -38,6 +38,12 @@ class UpdateFragment : Fragment() {
             updateItem()
 
         }
+        val deleteButton = view.findViewById<Button>(R.id.button2)
+        deleteButton.setOnClickListener{
+            taskViewModel.deleteTodo(args.currentTodo)
+            Toast.makeText(requireContext(), "Delete Successfully!", Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+        }
         return view
     }
     private fun updateItem(){
@@ -49,6 +55,8 @@ class UpdateFragment : Fragment() {
         Toast.makeText(requireContext(), "Update Successfully!", Toast.LENGTH_LONG).show()
         findNavController().navigate(R.id.action_updateFragment_to_listFragment)
     }
+
+
 
 
 }
