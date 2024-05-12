@@ -9,7 +9,7 @@ import kotlinx.coroutines.launch
 
 class TaskViewModel(application: Application): AndroidViewModel(application) {
 
-    private val getTodosOrderdByDate: LiveData<List<Todo>>
+    val getTodosOrderdByDate: LiveData<List<Todo>>
     private val repository: TaskRepository
 
     init {
