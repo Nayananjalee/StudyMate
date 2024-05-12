@@ -40,7 +40,7 @@ class UpdateFragment : Fragment() {
         return view
     }
     private fun updateItem(){
-        val task = view?.findViewById<EditText>(R.id.update_todo).toString()
+        val task = view?.findViewById<EditText>(R.id.update_todo)?.text.toString()
 
         val todo = Todo(args.currentTodo.id,task,args.currentTodo.isDone,args.currentTodo.createDate)
         taskViewModel.updateTodo(todo)
