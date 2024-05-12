@@ -1,28 +1,27 @@
 package com.example.studymate.database
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.flow.Flow
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
+class TaskViewModel(application: Application): AndroidViewModel(application) {
 
-class TaskViewModel(private val taskDao: TaskDao) : ViewModel() {
-    fun getAllTasks(): LiveData<List<Task>> {
-        return taskDao.getAllTasks()
+    private val getTodosOrderdByDate: LiveData<List<Todo>>
+    private val repository: TaskRepository
+
+    init {
+        val todoDao = TodoDatabase.getDatabase(application).todoDao()
+        repository = TaskRepository(todoDao)
+        getTodosOrderdByDate = repository.getTodosOrderdByDate
     }
 
-    fun getTasksForDate(date: Long): LiveData<List<Task>> {
-        return taskDao.getTasksForDate(date)
-    }
+    fun insertTodo(todo: Todo) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.insertTodo(todo)
 
-    fun insertTask(task: Task) {
-        taskDao.insertTask(task)
-    }
-
-    suspend fun updateTask(task: Task) {
-        taskDao.updateTask(task)
-    }
-
-    suspend fun deleteTask(task: Task) {
-        taskDao.deleteTask(task)
+        }
     }
 }

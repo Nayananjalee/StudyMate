@@ -5,20 +5,33 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Task::class], version = 1)
-abstract class TaskDatabase : RoomDatabase() {
-    abstract fun taskDao(): TaskDao
 
-    companion object {
-        private var instance: TaskDatabase? = null
+@Database(entities = [Todo::class],
+    version = 1,
+    exportSchema = false
+)
+abstract class TodoDatabase : RoomDatabase() {
+    abstract fun todoDao(): TodoDao
 
-        @Synchronized
-        fun getInstance(context: Context): TaskDatabase {
-            if (instance == null) {
-                instance = Room.databaseBuilder(context, TaskDatabase::class.java, "task_database")
-                    .build()
+    companion object{
+        @Volatile
+        private var INSTANCE:TodoDatabase? = null
+
+        fun getDatabase(context: Context): TodoDatabase{
+            val tempInstance = INSTANCE
+            if(tempInstance != null){
+                return tempInstance
             }
-            return instance!!
+            synchronized(this){
+                val instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    TodoDatabase::class.java,
+                    "todo_table"
+                ).build()
+                INSTANCE = instance
+                return instance
+            }
         }
     }
+
 }
