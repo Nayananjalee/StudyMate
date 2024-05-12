@@ -2,6 +2,7 @@ package com.example.studymate
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.nexttodo.R
 
 class UpcomingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
